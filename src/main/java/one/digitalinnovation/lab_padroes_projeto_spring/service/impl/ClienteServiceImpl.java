@@ -1,5 +1,8 @@
 package one.digitalinnovation.lab_padroes_projeto_spring.service.impl;
 
+import java.lang.StackWalker.Option;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,13 +58,31 @@ public class ClienteServiceImpl implements ClienteService {
 
   @Override
   public void atualizar(Long id, Cliente cliente) {
-    // TODO Auto-generated method stub
+    Optional<Cliente> clienteExistente = clienteRepository.findById(id);
+    if (clienteExistente.isPresent()) {
+      cliente.setId(id);
+      String cep = cliente.getEndereco().getCep();
+      Endereco endereco = enderecoRepository.findById(cep).orElseGet(() -> {
+        Endereco novoEndereco = viaCepService.consultarCep(cep);
+        enderecoRepository.save(novoEndereco);
+        return novoEndereco;
+      });
+      cliente.setEndereco(endereco);
+      clienteRepository.save(cliente);
+    } else {
+      throw new RuntimeException("Cliente não encontrado com o ID: " + id);
+    }
 
   }
 
   @Override
   public void deletar(Long id) {
-    // TODO Auto-generated method stub
+    Optional<Cliente> clienteExistente = clienteRepository.findById(id);
+    if (clienteExistente.isPresent()) {
+      clienteRepository.delete(clienteExistente.get());
+    } else {
+      throw new RuntimeException("Cliente não encontrado com o ID: " + id);
+    }
 
   }
 
