@@ -49,8 +49,4 @@ public class ClienteRestController {
 		return ResponseEntity.ok().build();
 	}
 
-	@GetMapping("/teste")
-	public ResponseEntity<String> testaApi() {
-		return ResponseEntity.ok("API de Clientes está funcionando corretamente!");
-	}
 }

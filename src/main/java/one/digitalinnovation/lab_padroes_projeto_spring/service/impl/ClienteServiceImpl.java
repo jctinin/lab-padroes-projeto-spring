@@ -1,6 +1,5 @@
 package one.digitalinnovation.lab_padroes_projeto_spring.service.impl;
 
-import java.lang.StackWalker.Option;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,12 +36,6 @@ public class ClienteServiceImpl implements ClienteService {
 
   @Override
   public void inserir(Cliente cliente) {
-
-    Cliente clienteExistente = clienteRepository.findById(cliente.getId()).orElse(null);
-    if (clienteExistente != null) {
-      throw new RuntimeException("Cliente já existe com o ID: " + cliente.getId());
-
-    }
 
     String cep = cliente.getEndereco().getCep();
     Endereco endereco = enderecoRepository.findById(cep).orElseGet(() -> {
