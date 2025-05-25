@@ -10,6 +10,7 @@ public class LabPadroesProjetoSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LabPadroesProjetoSpringApplication.class, args);
+		System.out.println("Aplicação iniciada com sucesso!");
 	}
 
 }
