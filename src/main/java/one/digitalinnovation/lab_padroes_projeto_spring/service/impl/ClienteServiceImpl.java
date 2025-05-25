@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import one.digitalinnovation.lab_padroes_projeto_spring.Repository.ClienteRepository;
-import one.digitalinnovation.lab_padroes_projeto_spring.Repository.EnderecoRepository;
 import one.digitalinnovation.lab_padroes_projeto_spring.model.Cliente;
 import one.digitalinnovation.lab_padroes_projeto_spring.model.Endereco;
+import one.digitalinnovation.lab_padroes_projeto_spring.repository.ClienteRepository;
+import one.digitalinnovation.lab_padroes_projeto_spring.repository.EnderecoRepository;
 import one.digitalinnovation.lab_padroes_projeto_spring.service.ClienteService;
 import one.digitalinnovation.lab_padroes_projeto_spring.service.ViaCepService;
 
